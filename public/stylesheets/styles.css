@@ -1,16 +1,116 @@
 body {
-
+  font-family: 'Raleway', sans-serif;
 }
 #map {
-  height: 800px;
+  height: 650px;
   width: 65%;
+  padding: 0;
 }
 .map-div {
   height: 500px;
   width: 500px;
   border: solid black;
+  padding: 0;
 }
 .info-panel{
+
+}
+.header-custom {
   background-color: black;
   color: white;
+  text-align: center;
+  padding: 4px;
+}
+.header-custom-green {
+  background-color: #41A317;
+  color: white;
+  text-align: center;
+  padding: 4px;
+}
+.header-custom-red {
+  background-color: red;
+  color: white;
+  text-align: center;
+  padding: 4px;
+}
+.header-custom-tertiary {
+  background-color: #3A445D;
+  color: white;
+  text-align: center;
+  padding: 4px;
+}
+.header-secondary {
+  background-color: grey;
+  color: white;
+  font-size: 18px;
+  text-align: center;
+}
+.button-custom {
+
+}
+.form-custom {
+  font-size: 20px;
+  text-align: center;
+  padding: 4px;
+}
+.form-custom button{
+  margin-top: 10px;
+}
+.form-custom option{
+  font-size: 18px;
+}
+.bordered {
+  border: solid black;
+  margin: 0;
+  padding: 0;
+  padding-bottom: 4px;
+}
+.hoverable:hover {
+  color: yellow;
+  font-weight: bolder;
+}
+.small-text {
+  color: grey;
+  font-size: 8px;
+  text-align: center;
+  padding-top: 8px;
+  margin-top: 16px;
+}
+
+.table-custom {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0 auto 0 auto;
+  text-align: center;
+}
+.table-custom td{
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+
+/*NAVBAR*/
+.navbar-custom {
+  background-color: black;
+  color: white;
+  font-size: 24px;
+  vertical-align: bottom;
+  padding: 0;
+  margin: 0;
+}
+.navbar-left {
+  margin-left: 8px;
+  margin-top: 10px;
+}
+.navbar-right {
+  margin-right: 8px;
+  margin-top: 10px;
+}
+/*.navbar-custom ul{
+  width: 100%;
+  float: right;
+}*/
+
+.container-custom {
+
 }
