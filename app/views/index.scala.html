@@ -1,20 +1,38 @@
-@*
- * This template takes a single argument, a String containing a
- * message to display.
- *@
-@(message: String)
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="@routes.Assets.versioned("javascripts/jquery-3.1.1.min.js")"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-@*
- * Call the `main` template with two arguments. The first
- * argument is a `String` with the title of the page, the second
- * argument is an `Html` object containing the body of the page.
- *@
-@main("Welcome to Play") {
+  <script src="@routes.Assets.versioned("javascripts/maploader.js")"></script>
+  <script src="@routes.Assets.versioned("javascripts/pageload.js")"></script>
+  <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/styles.css")">
 
-    @*
-     * Get an `Html` object by calling the built-in Play welcome
-     * template and passing a `String` message.
-     *@
-    @play20.welcome(message, style = "Scala")
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCO07-uXgg-uhv7t2VT8xCGMBbh0NjqTuU&libraries=visualization&callback=initMap" async defer></script>
+</head>
+<body>
+  <!--NAVBAR-->
+  <!-- <nav class="navbar-custom">
+  </nav> -->
 
-}
+  <div class="container">
+    <!--MAP -->
+    <div class="col-md-8 map-div" id="map">
+      <p>map</p>
+    </div>
+
+    <!--INFO PANEL -->
+    <div class="col-md-4 pull-right info-panel">
+      <div>
+        <h3>Positive</h3>
+      </div>
+      <div>
+        <h3>Negative</h3>
+      </div>
+    </div>
+
+
+  </div>
+</body>
+</html>
