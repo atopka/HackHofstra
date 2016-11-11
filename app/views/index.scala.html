@@ -7,32 +7,179 @@
 
   <script src="@routes.Assets.versioned("javascripts/maploader.js")"></script>
   <script src="@routes.Assets.versioned("javascripts/pageload.js")"></script>
+  <script src="@routes.Assets.versioned("javascripts/data.txt")"></script>
   <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/styles.css")">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCO07-uXgg-uhv7t2VT8xCGMBbh0NjqTuU&libraries=visualization&callback=initMap" async defer></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCO07-uXgg-uhv7t2VT8xCGMBbh0NjqTuU&libraries=visualization" async defer></script>
+
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCO07-uXgg-uhv7t2VT8xCGMBbh0NjqTuU&libraries=visualization&callback=initMap" async defer></script> -->
 </head>
 <body>
   <!--NAVBAR-->
-  <!-- <nav class="navbar-custom">
-  </nav> -->
-
-  <div class="container">
-    <!--MAP -->
-    <div class="col-md-8 map-div" id="map">
-      <p>map</p>
+  <nav class="navbar-custom navbar-static-top">
+    <div class="container-fluid container-custom">
+      <div class="col-md-4 navbar-left"><p>HackHofstra</p></div>
+      <!-- <div>
+        <p class="navbar-right">Help</p>
+      </div> -->
     </div>
+  </nav>
+  <br />
+  <div class="container-fluid">
+    <!--MAP -->
+    <div class="col-md-8 map-div" id="map"></div>
 
     <!--INFO PANEL -->
     <div class="col-md-4 pull-right info-panel">
-      <div>
-        <h3>Positive</h3>
+      <div class="header-custom">
+        <h3>Find a Location</h3>
       </div>
-      <div>
-        <h3>Negative</h3>
+      <div class="bordered">
+        <select class="form-control" id="location-selector">
+          <option>Rockefeller Center</option>
+          <option>Times Square</option>
+          <option>Trump Tower</option>
+          <option>Lincoln Center</option>
+        </select>
+      </div>
+      <br />
+
+      <div class="header-custom-green bordered">
+        <h3 class="hoverable" data-toggle="collapse" data-target="#criteria">Modify Criteria</h3>
+      </div>
+      <div id="criteria" class="collapse">
+        <br />
+        <form class="form-custom">
+          <div class="col-md-6">
+            <p>Crime</p>
+            <div class="radio">
+              <label><input class="mycheckbox" type="radio" name="crime" value="positive" >Positive</label>
+            </div>
+            <div class="radio">
+              <label><input class="mycheckbox" type="radio" name="crime" value="negative" checked>Negative</label>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <p>Recycling</p>
+            <div class="radio">
+              <label><input class="mycheckbox" type="radio" name="recycling" value="1" checked>Positive</label>
+            </div>
+            <div class="radio">
+              <label><input class="mycheckbox" type="radio" name="recycling" value="0">Negative</label>
+            </div>
+          </div>
+
+          <button id="btn_criteria">Show on Map</button>
+        </form>
+      </div>
+      <br />
+      <!-- <div class="header-custom-green bordered">
+        <h3 class="hoverable" data-toggle="collapse" data-target="#div_positive">Positive</h3>
+      </div>
+      <div id="div_positive" class="collapse">
+        <table id="table_positive" class="table-custom">
+          <tr><td>Low Crime<td></tr>
+        </table>
+      </div>
+      <br />
+      <div class="header-custom-red bordered">
+        <h3 class="hoverable" data-toggle="collapse" data-target="#div_negative">Negative</h3>
+      </div>
+      <div id="div_negative" class="collapse">
+        <table id="table_negative" class="table-custom">
+          <tr><td>High Traffic</td></tr>
+        </table>
+      </div>
+      <br /> -->
+
+      <!--FILTERS-->
+      <div class="header-custom-tertiary bordered">
+        <h3 class="hoverable" data-toggle="collapse" data-target="#filters">NYC Crime</h3>
+        <!-- <button data-toggle="collapse" data-target="#filters">Hello</button> -->
+      </div>
+      <div id="filters" class="collapse">
+        <div class="form-custom form-inline">
+          <form>
+            <div class="header-secondary">
+              <p>By Year</p>
+            </div>
+              <label>From:</label>
+              <select class="form-control" id="year-from-selector">
+                <option>2016</option>
+                <option>2015</option>
+                <option>2014</option>
+                <option>2013</option>
+                <option>2012</option>
+                <option>2011</option>
+                <option>2010</option>
+                <option>2009</option>
+                <option>2008</option>
+                <option>2007</option>
+                <option>2006</option>
+                <option>2005</option>
+                <option>2004</option>
+                <option>2003</option>
+                <option>2002</option>
+                <option>2001</option>
+                <option>2000</option>
+              </select>
+
+              <label>To:</label>
+              <select class="form-control" id="year-to-selector">
+                <option>2016</option>
+                <option>2015</option>
+                <option>2014</option>
+                <option>2013</option>
+                <option>2012</option>
+                <option>2011</option>
+                <option>2010</option>
+                <option>2009</option>
+                <option>2008</option>
+                <option>2007</option>
+                <option>2006</option>
+                <option>2005</option>
+                <option>2004</option>
+                <option>2003</option>
+                <option>2002</option>
+                <option>2001</option>
+                <option>2000</option>
+              </select>
+
+              <br />
+              <br />
+              <div class="header-secondary">
+                <p>By Borough</p>
+              </div>
+
+              <div class="checkbox">
+                <label><input class="mycheckbox" type="checkbox" name="borough" value="MANHATTAN" checked>Manhattan</label>
+              </div>
+              <div class="checkbox">
+                <label><input class="mycheckbox" type="checkbox" name="borough" value="QUEENS">Queens</label>
+              </div>
+              <div class="checkbox">
+                <label><input class="mycheckbox" type="checkbox" name="borough" value="BROOKLYN">Brooklyn</label>
+              </div>
+              <div class="checkbox">
+                <label><input class="mycheckbox" type="checkbox" name="borough" value="BRONX">Bronx</label>
+              </div>
+              <div class="checkbox">
+                <label><input class="mycheckbox" type="checkbox" name="borough" value="STATENISLAND">Staten Island</label>
+              </div>
+
+              <br />
+              <button id="btn_year">Update</button>
+          </form>
+        </div>
+      </div>
+      <!--*END FILTERS*-->
+      <div class="small=text">
+        <br />
+        <p>Statistics obtained from NYC OpenData. Visit https://data.cityofnewyork.us/ for more information.</p>
       </div>
     </div>
-
-
   </div>
 </body>
 </html>
