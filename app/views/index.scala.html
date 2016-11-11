@@ -7,10 +7,12 @@
 
   <script src="@routes.Assets.versioned("javascripts/maploader.js")"></script>
   <script src="@routes.Assets.versioned("javascripts/pageload.js")"></script>
+  <script src="@routes.Assets.versioned("javascripts/data.txt")"></script>
   <link rel="stylesheet" href="@routes.Assets.versioned("stylesheets/styles.css")">
   <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCO07-uXgg-uhv7t2VT8xCGMBbh0NjqTuU&libraries=visualization" async defer></script>
+
   <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCO07-uXgg-uhv7t2VT8xCGMBbh0NjqTuU&libraries=visualization&callback=initMap" async defer></script> -->
 </head>
 <body>
@@ -35,10 +37,45 @@
       </div>
       <div class="bordered">
         <select class="form-control" id="location-selector">
+          <option>Rockefeller Center</option>
+          <option>Times Square</option>
+          <option>Trump Tower</option>
+          <option>Lincoln Center</option>
         </select>
       </div>
       <br />
+
       <div class="header-custom-green bordered">
+        <h3 class="hoverable" data-toggle="collapse" data-target="#criteria">Modify Criteria</h3>
+      </div>
+      <div id="criteria" class="collapse">
+        <br />
+        <form class="form-custom">
+          <div class="col-md-6">
+            <p>Crime</p>
+            <div class="radio">
+              <label><input class="mycheckbox" type="radio" name="crime" value="positive" >Positive</label>
+            </div>
+            <div class="radio">
+              <label><input class="mycheckbox" type="radio" name="crime" value="negative" checked>Negative</label>
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <p>Recycling</p>
+            <div class="radio">
+              <label><input class="mycheckbox" type="radio" name="recycling" value="1" checked>Positive</label>
+            </div>
+            <div class="radio">
+              <label><input class="mycheckbox" type="radio" name="recycling" value="0">Negative</label>
+            </div>
+          </div>
+
+          <button id="btn_criteria">Show on Map</button>
+        </form>
+      </div>
+      <br />
+      <!-- <div class="header-custom-green bordered">
         <h3 class="hoverable" data-toggle="collapse" data-target="#div_positive">Positive</h3>
       </div>
       <div id="div_positive" class="collapse">
@@ -55,7 +92,7 @@
           <tr><td>High Traffic</td></tr>
         </table>
       </div>
-      <br />
+      <br /> -->
 
       <!--FILTERS-->
       <div class="header-custom-tertiary bordered">
